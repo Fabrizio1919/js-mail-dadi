@@ -11,9 +11,9 @@ Prima di partire a scrivere codice poniamoci qualche domanda:
 -- Se dobbiamo confrontare qualcosa che "cosa" ci serve? */
 
 
-// Chiedere all'utente la sua email
+/* // Chiedere all'utente la sua email
 const email = (prompt('Inserisci la tua email'));
-console.log(email);
+console.log(email); */
 
 // Creare una lista
 const listEmail = [
@@ -23,15 +23,58 @@ const listEmail = [
 ];
 console.log(listEmail);
 // Seleziono ogni elemento in console
-for (let i = 0; i < listEmail.length ;i++){
+for (let i = 0; i < listEmail.length; i++) {
     console.log(listEmail[i]);
 }
 
 //Seleziono l'input dalla DOM
 const buttonElement = document.querySelector('button')
 // Creo un event listner
-buttonElement = document.addEventListener('click', function() {
-    const emailInputElment = document.getElementById('emailInput').value
+buttonElement.addEventListener('click', function () {
+    const emailInputElement = document.getElementById('emailInput').value
+    console.log(emailInputElement);
+    const accessEmail = document.querySelector('p')
+    console.log(accessEmail);
+    let access;
+
+    for (let i = 0; i < listEmail.length; i++) {
+        if (listEmail[i] == emailInputElement) {
+            console.log('Puoi accedere ');
+            i = listEmail.length
+            accessEmail.innerHTML = 'Email presente, puoi accerdere';
+        } else {
+            access = 'Non puoi accedere'
+            console.log('Email non presente, non puoi accedere');
+            accessEmail.innerHTML = access;
+        }
+    }
+})
+
+const numberPc = document.getElementById('computer');
+const numberPlayer = document.getElementById('player');
+const result = document.getElementById('result');
+const buttonGioca = document.getElementById('gioca')
+buttonGioca.addEventListener('click', function () {
+    let numberCasualPlayer = Math.floor(Math.random() * 6) + 1;
+    let numberCasualPc = Math.floor(Math.random() * 6) + 1;
+    console.log(`Player ${numberCasualPlayer}`);
+    numberPlayer.innerHTML = numberCasualPlayer;
+
+    console.log(`Player PC ${numberCasualPc}`);
+    numberPc.innerHTML = numberCasualPc;
+
+
+    if (numberCasualPlayer > numberCasualPc) {
+        console.log('Vince il player');
+        result.innerHTML = 'Hai vinto'
+    } else if (
+        numberCasualPlayer < numberCasualPc) {
+        console.log('Vince il Pc')
+        result.innerHTML = 'Hai perso'
+    } else { 
+        console.log('Hai pareggiato');
+        result.innerHTML = 'Hai pareggiato'
+     }
 })
 
 
@@ -39,15 +82,18 @@ buttonElement = document.addEventListener('click', function() {
 
 
 //Genero un numero casuale da 1 a 6
-let numberCasual = Math.floor(Math.random()*6);
-//Loggo in console il numero casuale 
-console.log(numberCasual, 'Numero Casuale');
 
-// Creo una lista di numeri casuali
-const casualN = [
-    1, 2, 3, 4, 5, 6 ];
-console.log(casualN);
 
- for(let i = 0 ; i < casualN.lenght; i++) {
-    console.log(casualN[i]);
-} 
+
+
+
+
+
+
+
+
+
+
+
+
+
